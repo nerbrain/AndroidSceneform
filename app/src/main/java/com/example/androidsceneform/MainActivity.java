@@ -1,12 +1,15 @@
 package com.example.androidsceneform;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Transformation;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.ar.core.Anchor;
@@ -14,6 +17,7 @@ import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.HitTestResult;
+import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView bear,cow,dog,elephant,ferret,hippo,horse,koala,lion,reindeer,wolverine;
 
     View arrayView[];
-    ViewRenderable name_animal;
+
 
     int selected = 1; // Default Bear is selected
 
@@ -85,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setupModel() {
+
+
+
         ModelRenderable.builder()
                 .setSource(this, R.raw.bear)
                 .build()
@@ -220,89 +227,143 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void createModel(AnchorNode anchorNode, int selected) {
-        if (selected ==1 ){
+        if ( selected ==1 ){
             TransformableNode bear = new TransformableNode(arFragment.getTransformationSystem());
             bear.setParent(anchorNode);
             bear.setRenderable(bearRenderable);
             bear.select();
+
+            addName(anchorNode,bear,"Bear");
         }
 
-//        if (selected ==1 ){
-//            TransformableNode cat = new TransformableNode(arFragment.getTransformationSystem());
-//            cat.setParent(anchorNode);
-//            cat.setRenderable(catRenderable);
-//            cat.select();
-//        }
-//
-//        if (selected ==1 ){
-//            TransformableNode cow = new TransformableNode(arFragment.getTransformationSystem());
-//            cow.setParent(anchorNode);
-//            cow.setRenderable(cowRenderable);
-//            cow.select();
-//        }
-//
-//        if (selected ==1 ){
-//            TransformableNode dog = new TransformableNode(arFragment.getTransformationSystem());
-//            dog.setParent(anchorNode);
-//            dog.setRenderable(dogRenderable);
-//            dog.select();
-//        }
-//
-//        if (selected ==1 ){
-//            TransformableNode elephant = new TransformableNode(arFragment.getTransformationSystem());
-//            elephant.setParent(anchorNode);
-//            elephant.setRenderable(elephantRenderable);
-//            elephant.select();
-//        }
-//
-//        if (selected ==1 ){
-//            TransformableNode ferret = new TransformableNode(arFragment.getTransformationSystem());
-//            ferret.setParent(anchorNode);
-//            ferret.setRenderable(ferretRenderable);
-//            ferret.select();
-//        }
-//
-//        if (selected ==1 ){
-//            TransformableNode hippopotamus = new TransformableNode(arFragment.getTransformationSystem());
-//            hippopotamus.setParent(anchorNode);
-//            hippopotamus.setRenderable(hippopotamusRenderable);
-//            hippopotamus.select();
-//        }
-//
-//        if (selected ==1 ){
-//            TransformableNode horse = new TransformableNode(arFragment.getTransformationSystem());
-//            horse.setParent(anchorNode);
-//            horse.setRenderable(horseRenderable);
-//            horse.select();
-//        }
-//
-//        if (selected ==1 ){
-//            TransformableNode koala = new TransformableNode(arFragment.getTransformationSystem());
-//            koala.setParent(anchorNode);
-//            koala.setRenderable(koala_bearRenderable);
-//            koala.select();
-//        }
-//
-//        if (selected ==1 ){
-//            TransformableNode lion = new TransformableNode(arFragment.getTransformationSystem());
-//            lion.setParent(anchorNode);
-//            lion.setRenderable(lionRenderable);
-//            lion.select();
-//        }
-//
-//        if (selected ==1 ){
-//            TransformableNode reindeer = new TransformableNode(arFragment.getTransformationSystem());
-//            reindeer.setParent(anchorNode);
-//            reindeer.setRenderable(reindeerRenderable);
-//            reindeer.select();
-//        }
-//
-//        if (selected ==1 ){
-//            TransformableNode wolverine = new TransformableNode(arFragment.getTransformationSystem());
-//            wolverine.setParent(anchorNode);
-//            wolverine.setRenderable(wolverineRenderable);
-//            wolverine.select();
-//        }
+        if (selected == 2 ){
+            TransformableNode cat = new TransformableNode(arFragment.getTransformationSystem());
+            cat.setParent(anchorNode);
+            cat.setRenderable(catRenderable);
+            cat.select();
+
+            addName(anchorNode,cat,"cat");
+        }
+
+        if (selected == 3 ){
+            TransformableNode cow = new TransformableNode(arFragment.getTransformationSystem());
+            cow.setParent(anchorNode);
+            cow.setRenderable(cowRenderable);
+            cow.select();
+
+            addName(anchorNode,cow,"cow");
+        }
+
+        if (selected == 4){
+            TransformableNode dog = new TransformableNode(arFragment.getTransformationSystem());
+            dog.setParent(anchorNode);
+            dog.setRenderable(dogRenderable);
+            dog.select();
+
+            addName(anchorNode,dog,"Dog");
+        }
+
+        if (selected == 5 ){
+            TransformableNode elephant = new TransformableNode(arFragment.getTransformationSystem());
+            elephant.setParent(anchorNode);
+            elephant.setRenderable(elephantRenderable);
+            elephant.select();
+
+            addName(anchorNode,elephant,"Elephant");
+        }
+
+        if (selected == 6 ){
+            TransformableNode ferret = new TransformableNode(arFragment.getTransformationSystem());
+            ferret.setParent(anchorNode);
+            ferret.setRenderable(ferretRenderable);
+            ferret.select();
+
+            addName(anchorNode,ferret,"ferret");
+        }
+
+        if (selected == 7 ){
+            TransformableNode hippopotamus = new TransformableNode(arFragment.getTransformationSystem());
+            hippopotamus.setParent(anchorNode);
+            hippopotamus.setRenderable(hippopotamusRenderable);
+            hippopotamus.select();
+
+            addName(anchorNode,hippopotamus,"hippo");
+        }
+
+        if (selected == 8 ){
+            TransformableNode horse = new TransformableNode(arFragment.getTransformationSystem());
+            horse.setParent(anchorNode);
+            horse.setRenderable(horseRenderable);
+            horse.select();
+
+            addName(anchorNode,horse,"horse");
+        }
+
+        if (selected == 9 ){
+            TransformableNode koala = new TransformableNode(arFragment.getTransformationSystem());
+            koala.setParent(anchorNode);
+            koala.setRenderable(koala_bearRenderable);
+            koala.select();
+
+            addName(anchorNode,koala,"Koala");
+        }
+
+        if (selected == 10 ){
+            TransformableNode lion = new TransformableNode(arFragment.getTransformationSystem());
+            lion.setParent(anchorNode);
+            lion.setRenderable(lionRenderable);
+            lion.select();
+
+            addName(anchorNode,lion,"Lion");
+        }
+
+        if (selected == 11 ){
+            TransformableNode reindeer = new TransformableNode(arFragment.getTransformationSystem());
+            reindeer.setParent(anchorNode);
+            reindeer.setRenderable(reindeerRenderable);
+            reindeer.select();
+
+            addName(anchorNode,reindeer,"Reindeer");
+        }
+
+        if (selected == 12 ){
+            TransformableNode wolverine = new TransformableNode(arFragment.getTransformationSystem());
+            wolverine.setParent(anchorNode);
+            wolverine.setRenderable(wolverineRenderable);
+            wolverine.select();
+
+            addName(anchorNode,wolverine,"Wolverine");
+        }
+    }
+
+    private void addName(AnchorNode anchorNode, TransformableNode model, String name) {
+
+        ViewRenderable.builder().setView(this,R.layout.name_animal)
+                .build()
+                .thenAccept(viewRenderable -> {
+
+                    TransformableNode nameView = new TransformableNode(arFragment.getTransformationSystem());
+                    nameView.setLocalPosition(new Vector3(0f,model.getLocalPosition().y+0.5f,0));
+                    nameView.setParent(anchorNode);
+                    nameView.setRenderable(viewRenderable);
+                    nameView.select();
+
+                    //set text
+
+                    TextView txt_name = (TextView)viewRenderable.getView();
+                    txt_name.setText(name);
+                    //Click to text view to remove animal
+                    txt_name.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            anchorNode.setParent(null);
+                        }
+                    });
+
+                });
+
+
+
     }
 
     private void setClickListener() {
@@ -319,6 +380,62 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        if (view.getId() == R.id.bear) {
+            selected = 1;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.cat) {
+            selected = 2;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.cow) {
+            selected = 3;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.dog) {
+            selected = 4;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.elephant) {
+            selected = 5;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.ferret) {
+            selected = 6;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.hippopotamus) {
+            selected = 7;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.horse) {
+            selected = 8;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.koala_bear) {
+            selected = 9;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.lion) {
+            selected = 10;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.reindeer) {
+            selected = 11;
+            setBackground(view.getId());
+        }
+        else if (view.getId() == R.id.wolverine){
+            selected = 12;
+            setBackground(view.getId());
+        }
+    }
 
+
+    public void setBackground(int id){
+        for (View view : arrayView) {
+            if (view.getId() == id) {
+                view.setBackgroundColor(Color.parseColor("#80333639")); // Set animals as background
+            } else view.setBackgroundColor(Color.TRANSPARENT);
+        }
     }
 }
