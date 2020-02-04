@@ -26,7 +26,7 @@ import com.google.ar.sceneform.ux.TransformableNode;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "Error" ;
+    private static final String TAG = "Error in render" ;
     ArFragment arFragment;
     private ModelRenderable bearRenderable,
                             catRenderable,
